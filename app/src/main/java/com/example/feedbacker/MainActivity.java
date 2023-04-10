@@ -1,16 +1,28 @@
 package com.example.feedbacker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+
+import com.example.feedbacker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "Hello, World!", Toast.LENGTH_SHORT).show();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        Intent intent = new Intent(this, ListActivity.class);
+
+        binding.button.setOnClickListener(v -> {
+            intent.putExtra("organization", binding.organizationName.getText().toString());
+            startActivity(intent);
+        });
     }
 }
