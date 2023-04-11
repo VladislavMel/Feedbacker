@@ -8,38 +8,27 @@
     tools:ignore="HardcodedText">
 
     <TextView
-        android:id="@+id/text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/IdTextView"
         android:textSize="20sp"
-        android:text="Введите название организации"
         android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_above="@id/organization_name"
-        android:layout_centerHorizontal="true"/>
-
-    <EditText
-        android:id="@+id/organization_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:ems="10"
-        android:gravity="center"
-        android:backgroundTint="@color/cardview_light_background"
-        android:hint="навзание организации:"
-        android:textColorHint="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:layout_centerInParent="true"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:textStyle="bold"
+    <TextView
+        android:id="@+id/NameTextView"
         android:textSize="20sp"
-        android:text="запросить"/>
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/IdTextView"/>
+
+    <TextView
+        android:id="@+id/AddressTextView"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/IdTextView"/>
 
 </RelativeLayout>
