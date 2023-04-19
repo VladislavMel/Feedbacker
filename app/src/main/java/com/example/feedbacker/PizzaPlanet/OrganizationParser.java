@@ -1,5 +1,6 @@
-package com.example.feedbacker;
+package com.example.feedbacker.PizzaPlanet;
 
+import com.example.feedbacker.PizzaPlanet.Organization;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

@@ -1,4 +1,4 @@
-package com.example.feedbacker;
+package com.example.feedbacker.PizzaPlanet;
 
 import androidx.annotation.NonNull;
 

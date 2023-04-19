@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Feedbacker"
         tools:targetApi="31">
         <activity
-            android:name=".ListActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

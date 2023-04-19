@@ -1,4 +1,4 @@
-package com.example.feedbacker;
+package com.example.feedbacker.Feedbacker;
 
 public class Feedback {
     private String text;

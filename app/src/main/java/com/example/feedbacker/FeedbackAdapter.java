@@ -8,34 +8,52 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.feedbacker.Feedbacker.Feedback;
+import com.example.feedbacker.PizzaPlanet.Organization;
+
 import java.util.List;
 
-public class FeedbackAdapter extends ArrayAdapter<Feedback> {
+
+public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
-    private final int layout;
     private final List<Feedback> feedbacks;
 
-    public FeedbackAdapter(Context context, int resource, List<Feedback> feedbacks) {
-        super(context, resource, feedbacks);
+    public FeedbackAdapter(Context context, List<Feedback> feedbacks) {
+        super();
         this.feedbacks = feedbacks;
-        this.layout = resource;
         this.inflater = LayoutInflater.from(context);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    @NonNull
+    @Override
+    public FeedbackAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.list_item, parent, false);
+        return new ViewHolder(view);
+    }
 
-        @SuppressLint("ViewHolder") View view = inflater.inflate(this.layout, parent, false);
-
-        TextView nameView = view.findViewById(R.id.name);
-        TextView textView = view.findViewById(R.id.text);
-
+    @Override
+    public void onBindViewHolder(@NonNull FeedbackAdapter.ViewHolder holder, int position) {
         Feedback feedback = feedbacks.get(position);
+        holder.name.setText(feedback.getName());
+        holder.text.setText(feedback.getText());
+    }
 
-        nameView.setText(feedback.getName());
-        textView.setText(feedback.getText());
+    @Override
+    public int getItemCount() {
+        return feedbacks.size();
+    }
 
-        return view;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView name, text;
+        ViewHolder(View view){
+            super(view);
+            name = view.findViewById(R.id.name);
+            text = view.findViewById(R.id.text);
+        }
     }
 }
 

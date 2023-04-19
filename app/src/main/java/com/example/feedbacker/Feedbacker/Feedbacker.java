@@ -1,5 +1,6 @@
-package com.example.feedbacker;
+package com.example.feedbacker.Feedbacker;
 
+import com.example.feedbacker.Constants;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -16,11 +17,11 @@ import java.util.ArrayList;
 
 public class Feedbacker {
 
-    public ArrayList<Feedback> getReviews(String organization) throws IOException {
+    public static ArrayList<Feedback> getReviews(String organization) throws IOException {
         // Получение информации о заведении в json формате
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().
-                url("https://search-maps.yandex.ru/v1/?text=" + organization + ",Волгоград&type=biz&lang=ru_RU&results=1&apikey=f07e4006-27b1-4c34-ab91-37e3314ad93d").
+                url("https://search-maps.yandex.ru/v1/?text=" + organization + ",Волгоград&type=biz&lang=ru_RU&results=1&apikey=" + Constants.YANDEX_ORGANIZATIONS_API).
                 build();
         Response response = client.newCall(request).execute();
 
@@ -34,12 +35,7 @@ public class Feedbacker {
         JsonObject companyMetaData = (JsonObject) properties.get("CompanyMetaData");
         String id = String.valueOf(companyMetaData.get("id")).replace("\"", "");
 
-
-        // Получаяем страницу с отзывами от ЯндексКарт
-        String urlReviews = "https://yandex.ru/maps/org/" + id + "/reviews";
-
-        // Получение отзывов
-        Document doc = Jsoup.connect(urlReviews).get();
+        Document doc = Jsoup.connect(getOrganizationPage(id)).get();
 
         // Создание массива с отзывами
         ArrayList<Feedback> feedbacks = new ArrayList<>();
@@ -51,5 +47,10 @@ public class Feedbacker {
         }
 
         return feedbacks;
+    }
+
+    // Метод для формирования ссылки на страницу организации по переданному id
+    private static String getOrganizationPage (String id) {
+        return "https://yandex.ru/maps/org/" + id + "/reviews";
     }
 }

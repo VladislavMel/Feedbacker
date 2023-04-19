@@ -5,30 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:padding="16dp"
     tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/IdTextView"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-    <TextView
-        android:id="@+id/NameTextView"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/IdTextView"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
-    <TextView
-        android:id="@+id/AddressTextView"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/IdTextView"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </RelativeLayout>
